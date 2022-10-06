@@ -27,15 +27,13 @@
 //   { name: 'Company', href: '#', current: false },
 // ];
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Tabs({ tabs, tabsClickListener }) {
-  const [currentTab, setCurrentTab] = useState(-1);
-
+export default function Tabs({ tabs, tabsClickListener, currentTab }) {
   return (
     <div>
       {/* <div className="sm:hidden"> */}
@@ -62,8 +60,7 @@ export default function Tabs({ tabs, tabsClickListener }) {
               href={'eroer'}
               onClick={(e) => {
                 e.preventDefault();
-                tabsClickListener(tab.id);
-                setCurrentTab(i);
+                tabsClickListener(i);
               }}
               className={classNames(
                 currentTab === i
